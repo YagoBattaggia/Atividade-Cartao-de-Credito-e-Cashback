@@ -23,9 +23,16 @@ const Caixa = (props) => {
 
     Dica2: Você pode descobrir o nome da chave a ser utilizada aqui mesmo, neste arquivo.
 */
-const mapStateToProps = (state) => (
-    {
-        //seu código aqui
-    }
-)
+const mapStateToProps = (state) => {
+    console.log(state)
+    var cart = 0
+    var cash = 0
+    state.pedidosCartao.forEach(pedidoCartao => {
+        cart += parseFloat(pedidoCartao.valor)
+    })
+    state.pedidosCashback.forEach(pedidoCashback => {
+        cash += parseFloat(pedidoCashback.valor)
+    })
+    return ({caixa: cart-cash})
+}
 export default connect(mapStateToProps)(Caixa)

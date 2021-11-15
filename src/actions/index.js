@@ -15,9 +15,17 @@ export const ACOES = {
 */
 export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
     //substitua "null" pela sua solução
+    console.log({cpf, nome, cartaoEscolhido})
+    var data = new Date()
     return {
-        type: null,
-        payload: null
+        type: ACOES.pedirCartao,
+        payload: {
+            cpf,
+            nome,
+            tipoTransacao: "Pedido de Cartão",
+            data: data.toLocaleString(),
+            valor: cartaoEscolhido === "gold" ? 50 : 100
+        }
     }
 }
 
@@ -32,8 +40,15 @@ export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
 */
 export const pedirCashback = (cpf, valor) => {
     //substitua "null" pela sua solução
+    console.log({cpf, valor})
+    var data = new Date()
     return {
-        type: null,
-        payload: null
+        type: ACOES.pedirCashback,
+        payload: {
+            cpf,
+            valor,
+            tipoTransacao: "Pedido de Cashback",
+            data: data.toLocaleString()
+        }
     }
 }
